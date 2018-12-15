@@ -2,12 +2,13 @@ require 'test/unit'
 require_relative '../shell_sort'
 require_relative '../bubble_sort'
 require_relative '../selection_sort'
+require_relative '../insertion_sort'
 require 'bigdecimal'
 
 class TestShellSort < Test::Unit::TestCase
 
   def setup
-    @algo = [:shell_sort, :bubble_sort, :selection_sort]
+    @algo = [:shell_sort, :bubble_sort, :selection_sort, :insertion_sort]
   end
 
   def test_empty_array
