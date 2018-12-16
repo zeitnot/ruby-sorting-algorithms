@@ -3,12 +3,13 @@ require_relative '../shell_sort'
 require_relative '../bubble_sort'
 require_relative '../selection_sort'
 require_relative '../insertion_sort'
+require_relative '../quick_sort'
 require 'bigdecimal'
 
-class TestShellSort < Test::Unit::TestCase
+class TestSomeSorts < Test::Unit::TestCase
 
   def setup
-    @algo = [:shell_sort, :bubble_sort, :selection_sort, :insertion_sort]
+    @algo = [:shell_sort, :bubble_sort, :selection_sort, :insertion_sort, :quick_sort]
   end
 
   def test_empty_array
@@ -24,6 +25,13 @@ class TestShellSort < Test::Unit::TestCase
     end
   end
 
+  def test_reversed_sorted_array
+    array = Array(0..10).reverse
+    @algo.each do |algo|
+      assert_equal(self.send(algo,array), [0,1,2,3,4,5,6,7,8,9, 10])
+    end
+  end
+  
   def test_with_native_sort_function
     10.times do
       array = Array(0..1000).shuffle
