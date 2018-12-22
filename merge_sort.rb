@@ -1,12 +1,17 @@
 def merge(left, right)
-  return right if left.none? 
-  return left  if right.none? 
-  
-  if right[0] < left[0]
-    [right[0]] + merge(left, right[1..-1])
-  else 
-    [left[0]] + merge(left[1..-1], right)
-  end  
+  ar = []
+  while left.any? || right.any?
+    if left.any? && right.none? 
+      ar << left.shift
+    elsif left.none? && right.any? 
+      ar << right.shift
+    elsif right[0] < left[0]
+      ar << right.shift 
+    else 
+      ar << left.shift 
+    end  
+  end
+  ar
 end
 
 def merge_sort(ar)
