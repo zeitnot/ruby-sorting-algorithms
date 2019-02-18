@@ -1,10 +1,18 @@
 def bubble_sort(ar)
-  1.upto(ar.size ) do |i|
-    0.upto(ar.size - 1) do |j|
-      if ar[j+1] && ar[j+1] < ar[j]
-        ar[j], ar[j+1]  = ar[j+1], ar[j]
+  return ar if ar.size < 2 
+  sorted = false 
+  until_index = ar.size - 2
+  
+  until sorted
+    sorted = true 
+    0.upto(until_index) do |i|
+      current, _next = ar[i], ar[i + 1]
+      if current > _next 
+        ar[i], ar[i + 1] = _next, current 
       end 
-    end 
+      sorted = false 
+    end
+    until_index -=1 
   end 
-  ar 
-end 
+  ar
+end
